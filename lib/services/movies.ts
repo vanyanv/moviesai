@@ -15,7 +15,15 @@ export const moviesApi = createApi({
         },
       }),
     }),
+    topRatedMovies: builder.query({
+      query: () => ({
+        url: `trending/movie/week?language=en-US`,
+        params: {
+          api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useSearchMoviesQuery } = moviesApi;
+export const { useSearchMoviesQuery, useLazyTopRatedMoviesQuery } = moviesApi;
