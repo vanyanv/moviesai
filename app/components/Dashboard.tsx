@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { increment, decrement, incrementbytwo } from '@/lib/features/counter';
+import MovieSearch from './MovieSearch';
 export default function Dashboard() {
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
@@ -11,6 +12,8 @@ export default function Dashboard() {
       <button onClick={() => dispatch(increment())}>Increment</button>
       <button onClick={() => dispatch(decrement())}>Decrement</button>
       <button onClick={() => dispatch(incrementbytwo())}>Increment by 2</button>
+
+      <MovieSearch />
     </div>
   );
 }
