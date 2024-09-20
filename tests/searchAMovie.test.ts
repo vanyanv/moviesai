@@ -20,8 +20,10 @@ test('search a movie', async ({ page }) => {
   const movieList = await page.getByRole('main').getByRole('list');
   await expect(movieList.getByRole('listitem')).toHaveCount(20);
 
-  // await page.keyboard.press('Enter');
+  await page.getByRole('textbox', { name: 'Search for a movie...' }).fill(' ');
 
-  // const noResults = await page.getByRole('main').getByRole('list');
-  // await expect(noResults.getByRole('listitem')).not.toBeVisible();
+  await page.keyboard.press('Enter');
+
+  const noMovieList = await page.getByRole('main').getByRole('list');
+  await expect(noMovieList.getByRole('listitem')).toHaveCount(0);
 });
