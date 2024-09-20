@@ -36,7 +36,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function layout({ children }: { children: React.ReactNode }) {
+export default function layout() {
   return (
     <>
       <div className='min-h-full'>
@@ -313,7 +313,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
                     Section title
                   </h2>
                   <div className='overflow-hidden rounded-lg bg-white shadow'>
-                    <div className='p-6'>{children}</div>
+                    {/* <div className='p-6'>{children}</div> */}
                   </div>
                 </section>
               </div>

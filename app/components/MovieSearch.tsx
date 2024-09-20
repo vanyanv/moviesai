@@ -51,7 +51,7 @@ function MovieSearch() {
         </div>
       )}
 
-      <div className='mt-8 w-full max-w-4xl'>
+      <ul className='mt-8 w-full max-w-4xl'>
         {data?.results.map((movie: Movie) => (
           <MovieInfo
             key={movie.id}
@@ -63,7 +63,7 @@ function MovieSearch() {
             vote_count={movie.vote_count}
           />
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
