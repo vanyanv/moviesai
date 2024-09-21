@@ -1,54 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useTopRatedMoviesQuery } from '../../lib/services/movies';
+import MovieCard from './MovieCard';
 
-import MovieSearch from './MovieSearch';
+type Movie = {
+  backdrop_path: string;
+  id: number;
+  title: string;
+  original_title: string;
+  overview: string;
+};
 
 export default function Dashboard() {
-  const [filters, setFilters] = useState({ genre: '', rating: '' });
+  const { data } = useTopRatedMoviesQuery({});
 
-  const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [name]: value,
-    }));
-  };
+  const movies = data?.results;
 
   return (
-    <div>
-      <h1 className='text-5xl font-extrabold text-gray-800 mb-8 text-center'>
-        Movie Search Dashboard
+    <div className='flex flex-col min-h-screen bg-gray-100 p-4'>
+      <h1 className='text-4xl font-extrabold text-gray-800 mb-6 text-center'>
+        Top Movies
       </h1>
 
-      {/* Filters */}
-      <div className='flex flex-col md:flex-row items-center mb-6'>
-        <select
-          name='genre'
-          value={filters.genre}
-          onChange={handleFilterChange}
-          className='w-full md:w-1/2 px-4 py-3 rounded-lg shadow-md border border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 md:mb-0'
-        >
-          <option value=''>Select Genre</option>
-          {/* Add genre options here */}
-          <option value='Action'>Action</option>
-          <option value='Comedy'>Comedy</option>
-          <option value='Drama'>Drama</option>
-          {/* ...other genres */}
-        </select>
-
-        <select
-          name='rating'
-          value={filters.rating}
-          onChange={handleFilterChange}
-          className='w-full md:w-1/2 px-4 py-3 rounded-lg shadow-md border border-gray-300 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500'
-        >
-          <option value=''>Select Rating</option>
-          <option value='8'>8+</option>
-          <option value='7'>7+</option>
-          <option value='6'>6+</option>
-          {/* ...other ratings */}
-        </select>
+      <div className='flex-grow'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+          {movies && movies.slice(0, 10).map((movie: Movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+        </div>
       </div>
-      <MovieSearch />
     </div>
   );
 }

@@ -1,12 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { counterSlice } from './features/counter';
+
 import { moviesApi } from './services/movies';
 import { searchSlice } from './features/search';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      counter: counterSlice.reducer,
       search: searchSlice.reducer,
       [moviesApi.reducerPath]: moviesApi.reducer,
     },

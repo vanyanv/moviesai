@@ -26,4 +26,4 @@ export const moviesApi = createApi({
   }),
 });
 
-export const { useSearchMoviesQuery, useLazyTopRatedMoviesQuery } = moviesApi;
+export const { useSearchMoviesQuery, useTopRatedMoviesQuery } = moviesApi;
