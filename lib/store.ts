@@ -7,6 +7,7 @@ export const makeStore = () => {
   return configureStore({
     reducer: {
       search: searchSlice.reducer,
+      searchHistory: searchSlice.reducer,
       [moviesApi.reducerPath]: moviesApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
