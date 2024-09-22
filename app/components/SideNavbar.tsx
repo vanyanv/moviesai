@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FaSearch, FaFire, FaRobot, FaUser, FaCog } from 'react-icons/fa'; // Icon imports
 import { motion } from 'framer-motion'; // For animations
+import SearchHistory from './SearchHisotry';
 
 const navigation = [
   { name: 'Search', href: '/dashboard', icon: <FaSearch /> },
@@ -33,12 +34,12 @@ export default function SideNavbar() {
       </div>
 
       {/* Navigation Section */}
-      <nav className=' flex-1 justify-center items-center mt-10 ml-2.5 space-y-1'>
+      <nav className='flex-1 flex flex-col justify-start items-start ml-2.5 mt-10 space-y-4'>
         {navigation.map((item) => (
           <motion.a
             key={item.name}
             href={item.href}
-            className={`flex items-center space-x-3 px-4 py-3 group rounded-md hover:bg-gray-800 transition-all duration-300 relative`}
+            className='flex items-center space-x-3 px-4 py-3 group rounded-md hover:bg-gray-800 transition-all duration-300 relative'
           >
             <span className='text-xl'>{item.icon}</span>
             <motion.span
@@ -50,6 +51,15 @@ export default function SideNavbar() {
             </motion.span>
           </motion.a>
         ))}
+
+        {/* Search History Component */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isExpanded ? 1 : 0 }}
+          className='w-full'
+        >
+          <SearchHistory />
+        </motion.div>
       </nav>
 
       {/* Bottom Section */}
