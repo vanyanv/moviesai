@@ -11,24 +11,26 @@ const initialState: SearchState = {
   value: [],
 };
 
-export const searchSlice = createSlice({
+export const historySlice = createSlice({
   name: 'searchHistory',
   initialState,
   reducers: {
     addToHistory: (state, action: PayloadAction<string>) => {
+      if (state.value.includes(action.payload)) {
+        return;
+      }
+      if (action.payload === '') return;
       //if you want to keep the search history to 5 items
-      if (state.value.length === 5) {
-        //remove the last item
+      //add the new item to the beginning of the array
+      state.value.unshift(action.payload);
+      //if the search history exceeds 5 items, remove the last item
+      if (state.value.length > 5) {
         state.value.pop();
-        //add the new item to the beginning of the array
-        state.value.unshift(action.payload);
-      } else {
-        state.value.unshift(action.payload);
       }
     },
   },
 });
 
-export const { addToHistory } = searchSlice.actions;
+export const { addToHistory } = historySlice.actions;
 export const selectSearch = (state: RootState) => state.search.value;
-export default searchSlice.reducer;
+export default historySlice.reducer;

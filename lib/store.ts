@@ -2,12 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { moviesApi } from './services/movies';
 import { searchSlice } from './features/search';
+import { historySlice } from './features/searchHistory';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       search: searchSlice.reducer,
-      searchHistory: searchSlice.reducer,
+      searchHistory: historySlice.reducer,
       [moviesApi.reducerPath]: moviesApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>

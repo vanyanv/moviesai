@@ -4,22 +4,30 @@ import { useSearchMoviesQuery } from '../../lib/services/movies';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/lib/store';
 import { search } from '@/lib/features/search';
+import { addToHistory } from '@/lib/features/searchHistory';
 import MovieInfo from './MovieInfo';
 import { Movie } from '@/lib/definitions';
 
 function MovieSearch() {
   const searchValue = useSelector((state: RootState) => state.search.value);
+  const movieHistory = useSelector(
+    (state: RootState) => state.searchHistory.value
+  );
   const { data, isLoading } = useSearchMoviesQuery(searchValue, {
     skip: searchValue === '',
   });
-
   const dispatch = useDispatch();
+
+  console.log(movieHistory);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const movie = formData.get('movie') as string;
     dispatch(search(movie));
+    if (movie) {
+      dispatch(addToHistory(movie));
+    }
   };
 
   return (
