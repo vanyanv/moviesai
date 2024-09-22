@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { FaSearch, FaFire, FaRobot, FaUser, FaCog } from 'react-icons/fa'; // Icon imports
 import { motion } from 'framer-motion'; // For animations
-import SearchHistory from './SearchHisotry';
+import SearchHistory from './SearchHistory';
 
 const navigation = [
   { name: 'Search', href: '/dashboard', icon: <FaSearch /> },

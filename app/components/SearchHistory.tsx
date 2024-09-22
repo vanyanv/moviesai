@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/lib/store';
+import { randomUUID } from 'crypto';
 
 export default function SearchHistory() {
   const searchHistory = useSelector(
@@ -19,9 +20,9 @@ export default function SearchHistory() {
         Recent Searches
       </h3>
       <ul className='space-y-2'>
-        {searchHistory?.map((item: string, index: number) => (
+        {searchHistory?.map((item: string) => (
           <li
-            key={index}
+            key={randomUUID()}
             className='text-sm text-gray-400 transition-colors cursor-pointer hover:bg-gray-700 p-2 rounded-md'
           >
             {item}
