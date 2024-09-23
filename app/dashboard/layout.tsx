@@ -1,13 +1,13 @@
 import React from 'react';
-import MovieSearch from '../components/MovieSearch';
+
 import SideNavbar from '../components/SideNavbar';
 import TopNavbar from '../components/TopNavbar';
 
-export default function Layout() {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className='flex  h-screen'>
       {/* Sidebar */}
-      <div className='fixed'>
+      <div className='fixed z-20'>
         <SideNavbar />
       </div>
 
@@ -18,7 +18,7 @@ export default function Layout() {
 
         {/* Main Content */}
         <div className='flex-1 p-4 lg:p-6 overflow-auto max-w-full'>
-          <MovieSearch />
+          {children}
         </div>
       </div>
     </div>
