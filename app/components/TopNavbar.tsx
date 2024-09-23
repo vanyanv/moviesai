@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import { FaSearch, FaUserCircle } from 'react-icons/fa'; // Import icons
+import { FaUserCircle } from 'react-icons/fa'; // Import icons
 import { motion } from 'framer-motion'; // For animations
+import Search from './Search';
 
 export default function TopNavbar() {
   return (
@@ -16,14 +17,7 @@ export default function TopNavbar() {
       </div>
 
       {/* Search Bar */}
-      <div className='relative w-full sm:w-auto flex-1 mx-4 max-w-[600px]'>
-        <input
-          type='text'
-          placeholder='Search for a movie...'
-          className='w-full px-4 py-2 rounded-lg border border-gray-600 bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300'
-        />
-        <FaSearch className='absolute top-3 right-3 text-gray-500' />
-      </div>
+      <Search />
 
       {/* User Profile Section */}
       <div className='flex items-center space-x-4'>
