@@ -63,18 +63,20 @@ export default function SideNavbar() {
 
       {/* Bottom Section */}
       <div className='absolute bottom-0 w-full p-4'>
-        <motion.div
-          className='flex items-center space-x-3 hover:bg-gray-800 px-4 py-3 rounded-md cursor-pointer transition-colors'
-          onClick={() => console.log('Settings clicked')}
-        >
-          <FaCog className='text-xl' />
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isExpanded ? 1 : 0 }}
-            className='text-lg'
+        <motion.div>
+          <Link
+            href='/dashboard/settings'
+            className='flex items-center space-x-3 hover:bg-gray-800 px-4 py-3 rounded-md cursor-pointer transition-colors'
           >
-            Settings
-          </motion.span>
+            <FaCog className='text-xl' />
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isExpanded ? 1 : 0 }}
+              className='text-lg'
+            >
+              Settings
+            </motion.span>
+          </Link>
         </motion.div>
       </div>
     </motion.div>
