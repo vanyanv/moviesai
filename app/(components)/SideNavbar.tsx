@@ -1,15 +1,14 @@
 'use client';
 import React, { useState } from 'react';
-import { FaSearch, FaFire, FaRobot, FaUser, FaCog } from 'react-icons/fa'; // Icon imports
+import { FaFire, FaRobot, FaUser, FaCog } from 'react-icons/fa'; // Icon imports
 import { motion } from 'framer-motion'; // For animations
+import Link from 'next/link';
 import SearchHistory from './SearchHistory';
 
 const navigation = [
-  { name: 'Search', href: '/dashboard', icon: <FaSearch /> },
-  { name: 'Trending', href: '/trending', icon: <FaFire /> },
-  { name: 'Ai', href: '/ai', icon: <FaRobot /> },
-  { name: 'Profile', href: '/profile', icon: <FaUser /> },
-  { name: 'Settings', href: '/settings', icon: <FaCog /> },
+  { name: 'Trending', href: '/dashboard', icon: <FaFire /> },
+  { name: 'Ai', href: '/dashboard/ai', icon: <FaRobot /> },
+  { name: 'Profile', href: '/dashboard/profile', icon: <FaUser /> },
 ];
 
 export default function SideNavbar() {
@@ -36,7 +35,7 @@ export default function SideNavbar() {
       {/* Navigation Section */}
       <nav className='flex-1 flex flex-col justify-start items-start ml-2.5 mt-10 space-y-4'>
         {navigation.map((item) => (
-          <motion.a
+          <Link
             key={item.name}
             href={item.href}
             className='flex items-center space-x-3 px-4 py-3 group rounded-md hover:bg-gray-800 transition-all duration-300 relative'
@@ -49,7 +48,7 @@ export default function SideNavbar() {
             >
               {item.name}
             </motion.span>
-          </motion.a>
+          </Link>
         ))}
 
         {/* Search History Component */}

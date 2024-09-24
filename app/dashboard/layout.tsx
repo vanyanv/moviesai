@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SideNavbar from '../components/SideNavbar';
-import TopNavbar from '../components/TopNavbar';
+import SideNavbar from '../(components)/SideNavbar';
+import TopNavbar from '../(components)/TopNavbar';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
