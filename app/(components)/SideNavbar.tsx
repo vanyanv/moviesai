@@ -1,15 +1,14 @@
 'use client';
 import React, { useState } from 'react';
-import { FaSearch, FaFire, FaRobot, FaUser, FaCog } from 'react-icons/fa'; // Icon imports
+import { FaFire, FaRobot, FaUser, FaCog } from 'react-icons/fa'; // Icon imports
 import { motion } from 'framer-motion'; // For animations
+import Link from 'next/link';
 import SearchHistory from './SearchHistory';
 
 const navigation = [
-  { name: 'Search', href: '/dashboard', icon: <FaSearch /> },
-  { name: 'Trending', href: '/trending', icon: <FaFire /> },
-  { name: 'Ai', href: '/ai', icon: <FaRobot /> },
-  { name: 'Profile', href: '/profile', icon: <FaUser /> },
-  { name: 'Settings', href: '/settings', icon: <FaCog /> },
+  { name: 'Trending', href: '/dashboard', icon: <FaFire /> },
+  { name: 'Ai', href: '/dashboard/ai', icon: <FaRobot /> },
+  { name: 'Profile', href: '/dashboard/profile', icon: <FaUser /> },
 ];
 
 export default function SideNavbar() {
@@ -36,7 +35,7 @@ export default function SideNavbar() {
       {/* Navigation Section */}
       <nav className='flex-1 flex flex-col justify-start items-start ml-2.5 mt-10 space-y-4'>
         {navigation.map((item) => (
-          <motion.a
+          <Link
             key={item.name}
             href={item.href}
             className='flex items-center space-x-3 px-4 py-3 group rounded-md hover:bg-gray-800 transition-all duration-300 relative'
@@ -49,7 +48,7 @@ export default function SideNavbar() {
             >
               {item.name}
             </motion.span>
-          </motion.a>
+          </Link>
         ))}
 
         {/* Search History Component */}
@@ -64,18 +63,20 @@ export default function SideNavbar() {
 
       {/* Bottom Section */}
       <div className='absolute bottom-0 w-full p-4'>
-        <motion.div
-          className='flex items-center space-x-3 hover:bg-gray-800 px-4 py-3 rounded-md cursor-pointer transition-colors'
-          onClick={() => console.log('Settings clicked')}
-        >
-          <FaCog className='text-xl' />
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isExpanded ? 1 : 0 }}
-            className='text-lg'
+        <motion.div>
+          <Link
+            href='/dashboard/settings'
+            className='flex items-center space-x-3 hover:bg-gray-800 px-4 py-3 rounded-md cursor-pointer transition-colors'
           >
-            Settings
-          </motion.span>
+            <FaCog className='text-xl' />
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isExpanded ? 1 : 0 }}
+              className='text-lg'
+            >
+              Settings
+            </motion.span>
+          </Link>
         </motion.div>
       </div>
     </motion.div>
