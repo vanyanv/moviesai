@@ -18,7 +18,7 @@ export default function MovieInfo({
   vote_count,
 }: MovieInfoProps) {
   return (
-    <li className='flex flex-col md:flex-row bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105 mx-auto my-6 max-w-4xl'>
+    <li className='flex flex-col md:flex-row bg-white shadow-md rounded-lg  transition-transform transform hover:scale-105 mx-auto my-6 max-w-4xl'>
       {/* Movie Poster */}
       <img
         src={`https://image.tmdb.org/t/p/w500${poster_path}`}

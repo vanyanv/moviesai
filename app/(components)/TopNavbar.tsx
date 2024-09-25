@@ -7,7 +7,7 @@ import Search from './Search';
 export default function TopNavbar() {
   return (
     <motion.div
-      className='bg-gray-900 text-white shadow-md flex flex-wrap items-center justify-between px-4 py-3'
+      className='bg-gray-900 text-white shadow-md flex flex-wrap items-center justify-between px-4 py-3 fixed w-full z-10'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >

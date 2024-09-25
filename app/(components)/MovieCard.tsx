@@ -10,28 +10,29 @@ type Movie = {
 
 type MovieCardProps = {
   movie: Movie;
+  rank: number; // Add a rank prop for the movie ranking
 };
 
-export default function MovieCard({ movie }: MovieCardProps) {
+export default function MovieCard({ movie, rank }: MovieCardProps) {
   return (
-    <div className='bg-white shadow-lg rounded-lg overflow-hidden max-w-xs mx-auto transition-transform transform hover:scale-105'>
+    <div className='relative bg-white shadow-lg rounded-2xl overflow-hidden w-36 h-46 m-4 transition-transform transform hover:scale-105'>
+      {/* Ranking Number */}
+      <div className='absolute top-2 left-2 z-10 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold'>
+        {`#${rank}`}
+      </div>
+
+      {/* Movie Backdrop Image */}
       <img
         src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
         alt={movie.title}
-        className='w-full h-48 object-cover transition-transform duration-300 hover:scale-110'
+        className='w-full h-48 object-cover rounded-lg transition-transform duration-300 hover:scale-110'
       />
-      <div className='p-4'>
-        <h3 className='text-xl font-semibold text-gray-800 mb-2'>
+
+      {/* Movie Title */}
+      <div className='p-2'>
+        <h3 className='text-xs font-semibold text-gray-800 text-center'>
           {movie.title}
         </h3>
-        <p className='text-gray-600 text-sm mb-2'>
-          {movie.overview.length > 100
-            ? `${movie.overview.slice(0, 100)}...`
-            : movie.overview}
-        </p>
-        <button className='mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300'>
-          View Details
-        </button>
       </div>
     </div>
   );
